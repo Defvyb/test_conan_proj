@@ -1,6 +1,12 @@
 dist: trusty
 language: cpp
 
+install:
+  - ./.travis/install.sh
+
+script:
+  - ./.travis/run.sh
+
 script:
   - mkdir build && cd build
   - cmake .. -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DCMAKE_CXX_COMPILER=$COMPILER
@@ -29,30 +35,3 @@ addons:
       - g++-5
       - g++-6
       - clang-3.9
-
-matrix:
-  include:
-    - os: osx
-      osx_image: xcode6.4
-      env: BUILD_TYPE=Debug
-    - os: osx
-      osx_image: xcode7.3
-      env: BUILD_TYPE=Debug
-    - os: osx
-      osx_image: xcode8
-      env: BUILD_TYPE=Debug
-    - os: osx
-      osx_image: xcode8.2
-      env: BUILD_TYPE=Debug
-    - os: osx
-      osx_image: xcode6.4
-      env: BUILD_TYPE=Release
-    - os: osx
-      osx_image: xcode7.3
-      env: BUILD_TYPE=Release
-    - os: osx
-      osx_image: xcode8
-      env: BUILD_TYPE=Release
-    - os: osx
-      osx_image: xcode8.2
-      env: BUILD_TYPE=Release
