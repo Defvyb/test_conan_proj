@@ -7,6 +7,10 @@ install:
 build_script:
   - conan test_package --build=missing -s build_type=%BUILD_TYPE% -s compiler="Visual Studio" -s compiler.version=%TOOLCHAIN_VERSION%
 
+on_success:
+  - conan user Defvyb -p %CONAN_PASSWORD% -r conan.io
+  - conan copy hello/0.1@demo/testing Defvyb/testing --all
+  - conan upload hello/0.1@Defvyb/testing -r conan.io --all
 
 environment:
   PYTHON: "C:\\Python27"

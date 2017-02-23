@@ -1,3 +1,4 @@
 /build_local
 conanbuildinfo.cmake
 conaninfo.txt
+/test_package/build
