@@ -7,13 +7,6 @@ install:
 script:
   - sh ./.travis/run.sh
 
-script:
-  - mkdir build && cd build
-  - cmake .. -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DCMAKE_CXX_COMPILER=$COMPILER
-  - cmake --build . -- VERBOSE=1
-  - ./hello
-
-
 env:
   - BUILD_TYPE=Release COMPILER=g++-4.9
   - BUILD_TYPE=Release COMPILER=g++-5
