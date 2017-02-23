@@ -1,1 +1,3 @@
 /build_local
+conanbuildinfo.cmake
+conaninfo.txt
