@@ -20,6 +20,6 @@ env:
     - CONAN_GCC_VERSIONS=5.3 CONAN_USE_DOCKER=1
 
 install:
-  - ./.travis/install.sh
+ - sh ./.travis/install.sh
 script:
-- ./.travis/run.sh
+ - sh ./.travis/run.sh
