@@ -1,33 +1,25 @@
-dist: trusty
-language: cpp
+os: linux
+services:
+   - docker
+sudo: required
+language: python
+env:
+  global:
+    - CONAN_UPLOAD=1
+    - CONAN_REFERENCE="hello/0.1"
+    - CONAN_USERNAME="Defvyb"
+    - CONAN_CHANNEL="testing"
+    - CONAN_TOTAL_PAGES=1
+    - CONAN_CURRENT_PAGE=1
+
+  matrix:
+    - CONAN_GCC_VERSIONS=4.6 CONAN_USE_DOCKER=1
+    - CONAN_GCC_VERSIONS=4.8 CONAN_USE_DOCKER=1
+    - CONAN_GCC_VERSIONS=4.9 CONAN_USE_DOCKER=1 
+    - CONAN_GCC_VERSIONS=5.2 CONAN_USE_DOCKER=1
+    - CONAN_GCC_VERSIONS=5.3 CONAN_USE_DOCKER=1
 
 install:
-  - sh ./.travis/install.sh
-
+  - ./.travis/install.sh
 script:
-  - sh ./.travis/run.sh
-  
-after_script:
-  - ./.travis/upload.sh
-
-env:
-  - BUILD_TYPE=Release COMPILER=g++-4.9
-  - BUILD_TYPE=Release COMPILER=g++-5
-  - BUILD_TYPE=Release COMPILER=g++-6
-  - BUILD_TYPE=Release COMPILER=clang++-3.9
-  - BUILD_TYPE=Debug COMPILER=g++-4.9
-  - BUILD_TYPE=Debug COMPILER=g++-5
-  - BUILD_TYPE=Debug COMPILER=g++-6
-  - BUILD_TYPE=Debug COMPILER=clang++-3.9
-
-
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-      - llvm-toolchain-trusty-3.9
-    packages:
-      - g++-4.9
-      - g++-5
-      - g++-6
-      - clang-3.9
+- ./.travis/run.sh

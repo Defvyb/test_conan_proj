@@ -27,6 +27,7 @@ if [[ "$(uname -s)" == 'Linux' ]]; then
     CXX=$CXX_COMPILER
 fi
 
-pip install conan
+pip install conan_package_tools
+
 
 conan user
