@@ -6,6 +6,9 @@ install:
 
 script:
   - sh ./.travis/run.sh
+  
+after_script:
+  - ./.travis/upload.sh
 
 env:
   - BUILD_TYPE=Release COMPILER=g++-4.9
